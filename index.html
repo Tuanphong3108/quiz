@@ -33,7 +33,7 @@
         <div class="text-center mb-8">
             <span class="material-symbols-outlined text-6xl text-[#6750a4] mb-2">psychology</span>
             <h1 class="text-3xl md:text-4xl font-bold text-[#1d1b20]">Quiz about PhongVN</h1>
-            <p class="text-[#49454f] mt-2">Thử thách độ hiểu biết thông qua bộ câu hỏi trắc nghiệm.</p>
+            <p class="text-[#49454f] mt-2">Thử thách độ hiểu biết thông qua bộ 10 câu hỏi trắc nghiệm.</p>
         </div>
 
         <!-- Màn 1: Nhập Tên -->
@@ -47,6 +47,12 @@
             <button id="btn-start" class="w-full py-4 bg-[#6750a4] text-white font-semibold rounded-2xl shadow-md hover:bg-[#523d8b] transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <span class="material-symbols-outlined">play_arrow</span> Bắt đầu làm bài
             </button>
+        </div>
+
+        <!-- Màn Loading (Hiển thị khi đang kết nối server) -->
+        <div id="screen-loading" class="hidden flex flex-col items-center justify-center py-12 space-y-4">
+            <img src="https://tuanphong3108.github.io/md3-loading/Loading_Indicator.gif" alt="Loading" class="w-16 h-auto brightness-0 saturate-100 invert-[39%] sepia-[29%] saturate-[1331%] hue-rotate-[238deg] brightness-[91%] contrast-[89%]">
+            <p id="loading-text" class="text-sm font-medium text-[#49454f]">Đang kết nối tới máy chủ lưu trữ...</p>
         </div>
 
         <!-- Màn 2: Xác thực Admin -->
@@ -65,7 +71,7 @@
             </button>
         </div>
 
-        <!-- Màn 3: Quiz -->
+        <!-- Màn 3: Quiz (10 câu) -->
         <div id="screen-quiz" class="hidden space-y-6">
             <div class="flex justify-between items-center text-sm font-medium text-[#49454f] bg-[#f7f2fa] px-4 py-2 rounded-xl">
                 <span id="question-counter">Câu 1 / 10</span>
@@ -148,22 +154,28 @@
                 return;
             }
 
-            const check = await checkPlayerName(nameInput);
+            // 🚀 Hiển thị màn hình Loading kết nối server
+            document.getElementById('screen-name').classList.add('hidden');
+            document.getElementById('screen-loading').classList.remove('hidden');
 
-            if (check.status === "ADMIN_TRIGGER") {
-                document.getElementById('screen-name').classList.add('hidden');
-                document.getElementById('screen-admin-auth').classList.remove('hidden');
-            } else if (check.status === "NAME_TAKEN") {
-                localStorage.setItem('phongvn_quiz_user', nameInput);
-                currentPlayerName = nameInput;
-                showExistingResult(check.data);
-            } else {
-                currentPlayerName = check.name;
-                document.getElementById('screen-name').classList.add('hidden');
-                document.getElementById('screen-quiz').classList.remove('hidden');
-                document.getElementById('quiz-player-tag').innerText = `Thí sinh: ${currentPlayerName}`;
-                loadQuestion();
-            }
+            // Giả lập độ trễ nhẹ một chút cho mượt mà hoặc đợi Firebase trả về kết quả
+            setTimeout(async () => {
+                const check = await checkPlayerName(nameInput);
+                document.getElementById('screen-loading').classList.add('hidden');
+
+                if (check.status === "ADMIN_TRIGGER") {
+                    document.getElementById('screen-admin-auth').classList.remove('hidden');
+                } else if (check.status === "NAME_TAKEN") {
+                    localStorage.setItem('phongvn_quiz_user', nameInput);
+                    currentPlayerName = nameInput;
+                    showExistingResult(check.data);
+                } else {
+                    currentPlayerName = check.name;
+                    document.getElementById('screen-quiz').classList.remove('hidden');
+                    document.getElementById('quiz-player-tag').innerText = `Thí sinh: ${currentPlayerName}`;
+                    loadQuestion();
+                }
+            }, 600);
         });
 
         // Xác minh Admin
@@ -273,9 +285,9 @@
             document.getElementById("result-title").innerText = `Kết Quả Của: ${currentPlayerName}`;
 
             let comment = "";
-            if (score === 15) {
+            if (score === 10) {
                 comment = "Tuyệt đối! Hoàn thành xuất sắc toàn bộ các câu hỏi.";
-            } else if (score >= 10) {
+            } else if (score >= 7) {
                 comment = "Kết quả tốt! Độ hiểu biết ở mức khá cao.";
             } else {
                 comment = "Cần cải thiện thêm kiến thức để đạt kết quả cao hơn.";
