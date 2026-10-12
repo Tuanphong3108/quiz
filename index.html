@@ -32,8 +32,8 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <span class="material-symbols-outlined text-6xl text-[#6750a4] mb-2">psychology</span>
-            <h1 class="text-3xl md:text-4xl font-bold text-[#1d1b20]">Quiz about PhongVN 😎</h1>
-            <p class="text-[#49454f] mt-2">Thử thách độ hiểu biết về chủ nhân xem được mấy điểm!</p>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#1d1b20]">Quiz about PhongVN</h1>
+            <p class="text-[#49454f] mt-2">Thử thách độ hiểu biết thông qua bộ câu hỏi trắc nghiệm.</p>
         </div>
 
         <!-- Màn 1: Nhập Tên -->
@@ -45,23 +45,23 @@
                 <p id="name-error" class="text-sm text-[#b3261e] mt-2 hidden font-semibold"></p>
             </div>
             <button id="btn-start" class="w-full py-4 bg-[#6750a4] text-white font-semibold rounded-2xl shadow-md hover:bg-[#523d8b] transition-all flex items-center justify-center gap-2 cursor-pointer">
-                <span class="material-symbols-outlined">play_arrow</span> Bắt đầu chiến đấu
+                <span class="material-symbols-outlined">play_arrow</span> Bắt đầu làm bài
             </button>
         </div>
 
-        <!-- Màn 2: Xác thực Admin (Nếu gõ PhongVN) -->
+        <!-- Màn 2: Xác thực Admin -->
         <div id="screen-admin-auth" class="hidden space-y-6">
             <div class="bg-[#f7f2fa] p-6 rounded-2xl border border-[#e6e1e5]">
                 <div class="flex items-center gap-2 mb-4 text-[#6750a4]">
                     <span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
-                    <h2 class="text-xl font-bold">Xác minh Chủ Nhân (Phong VN)</h2>
+                    <h2 class="text-xl font-bold">Xác thực Quản trị viên</h2>
                 </div>
-                <input type="password" id="admin-pass-input" placeholder="Nhập Master Key..." 
+                <input type="password" id="admin-pass-input" placeholder="Nhập mật khẩu quản trị..." 
                     class="w-full px-4 py-3 rounded-xl border border-[#79747e] bg-white text-[#1d1b20] focus:outline-none focus:border-[#6750a4]">
-                <p id="admin-pass-error" class="text-sm text-[#b3261e] mt-2 hidden">Mật khẩu sai rồi bro ơi! 💀</p>
+                <p id="admin-pass-error" class="text-sm text-[#b3261e] mt-2 hidden">Mật khẩu không chính xác.</p>
             </div>
             <button id="btn-admin-login" class="w-full py-4 bg-[#6750a4] text-white font-semibold rounded-2xl shadow-md hover:bg-[#523d8b] transition-all flex items-center justify-center gap-2 cursor-pointer">
-                <span class="material-symbols-outlined">login</span> Vào Dashboard Admin
+                <span class="material-symbols-outlined">login</span> Truy cập Bảng điều khiển
             </button>
         </div>
 
@@ -91,32 +91,28 @@
         <div id="screen-result" class="hidden space-y-6">
             <div id="result-banner" class="text-center bg-[#f7f2fa] p-6 rounded-3xl border border-[#e6e1e5]">
                 <span class="material-symbols-outlined text-6xl text-[#6750a4] mb-2">military_tech</span>
-                <h2 id="result-title" class="text-2xl font-bold text-[#1d1b20]">Kết Quả Của Bạn</h2>
+                <h2 id="result-title" class="text-2xl font-bold text-[#1d1b20]">Kết Quả</h2>
                 <p id="final-score-text" class="text-4xl font-extrabold text-[#6750a4] my-2">0 / 15</p>
                 <p id="result-comment" class="text-[#49454f] font-medium"></p>
             </div>
 
             <div class="space-y-4">
                 <h3 class="text-xl font-bold text-[#1d1b20] flex items-center gap-2">
-                    <span class="material-symbols-outlined text-[#6750a4]">leaderboard</span> Bảng Xếp Hạng Đám Bạn
+                    <span class="material-symbols-outlined text-[#6750a4]">leaderboard</span> Bảng Xếp Hạng
                 </h3>
                 <div id="leaderboard-list" class="bg-[#f7f2fa] rounded-2xl p-4 divide-y divide-[#e6e1e5] max-h-60 overflow-y-auto"></div>
             </div>
-
-            <button onclick="location.reload()" class="w-full py-4 bg-[#6750a4] text-white font-semibold rounded-2xl hover:bg-[#523d8b] transition-all flex items-center justify-center gap-2 cursor-pointer">
-                <span class="material-symbols-outlined">refresh</span> Làm lại / Đổi tên khác
-            </button>
         </div>
 
-        <!-- Màn 5: Admin Dashboard (Có tính năng Reset người dùng) -->
+        <!-- Màn 5: Admin Dashboard -->
         <div id="screen-admin-dashboard" class="hidden space-y-6">
             <div class="flex justify-between items-center bg-[#e8def8] p-4 rounded-2xl text-[#1d192b]">
-                <span class="font-bold text-lg flex items-center gap-2"><span class="material-symbols-outlined">analytics</span> Admin Panel - Phong VN</span>
+                <span class="font-bold text-lg flex items-center gap-2"><span class="material-symbols-outlined">analytics</span> Bảng Điều Khiển Quản Trị</span>
                 <button onclick="location.reload()" class="text-sm bg-white px-3 py-1 rounded-xl font-semibold text-[#6750a4] cursor-pointer">Thoát</button>
             </div>
 
             <div class="space-y-4">
-                <h3 class="font-bold text-lg text-[#1d1b20]">Danh sách bài làm của đám bạn:</h3>
+                <h3 class="font-bold text-lg text-[#1d1b20]">Danh sách kết quả người tham gia:</h3>
                 <div id="admin-data-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2"></div>
             </div>
         </div>
@@ -139,7 +135,15 @@
             errorElement.classList.add('hidden');
 
             if (!nameInput) {
-                errorElement.innerText = "Nhập tên vào đã bro ơi! 🧐";
+                errorElement.innerText = "Vui lòng nhập tên hoặc tên người dùng.";
+                errorElement.classList.remove('hidden');
+                return;
+            }
+
+            // Kiểm tra chống lách luật trên thiết bị
+            const savedDeviceUser = localStorage.getItem('phongvn_quiz_user');
+            if (savedDeviceUser && savedDeviceUser !== nameInput && nameInput !== "PhongVN") {
+                errorElement.innerText = `Thiết bị này đã ghi nhận một lượt nộp bài với tên "${savedDeviceUser}". Không thể thay đổi tên để làm lại.`;
                 errorElement.classList.remove('hidden');
                 return;
             }
@@ -150,6 +154,7 @@
                 document.getElementById('screen-name').classList.add('hidden');
                 document.getElementById('screen-admin-auth').classList.remove('hidden');
             } else if (check.status === "NAME_TAKEN") {
+                localStorage.setItem('phongvn_quiz_user', nameInput);
                 currentPlayerName = nameInput;
                 showExistingResult(check.data);
             } else {
@@ -161,7 +166,7 @@
             }
         });
 
-        // Login Admin
+        // Xác minh Admin
         document.getElementById('btn-admin-login').addEventListener('click', () => {
             const pass = document.getElementById('admin-pass-input').value;
             if (verifyAdminPassword(pass)) {
@@ -227,7 +232,7 @@
 
         document.getElementById('btn-next').addEventListener('click', async () => {
             if (selectedAnswers[currentQuestionIndex] === null) {
-                alert("Chọn một đáp án đi đại hiệp ơi, đừng bỏ trống chứ! 🧐");
+                alert("Vui lòng chọn một đáp án trước khi tiếp tục.");
                 return;
             }
 
@@ -257,6 +262,7 @@
             });
 
             await saveQuizResult(currentPlayerName, score, quizData.length, detailedAnswers);
+            localStorage.setItem('phongvn_quiz_user', currentPlayerName);
             showResultScreen(score);
         }
 
@@ -268,11 +274,11 @@
 
             let comment = "";
             if (score === 15) {
-                comment = "Đỉnh chóp! Hiểu chủ web từng chân tơ kẽ tóc luôn! 👑🔥";
+                comment = "Tuyệt đối! Hoàn thành xuất sắc toàn bộ các câu hỏi.";
             } else if (score >= 10) {
-                comment = "Hiểu nhau sương sương đấy, chuẩn bị rủ đi trà sữa được rồi! 😉";
+                comment = "Kết quả tốt! Độ hiểu biết ở mức khá cao.";
             } else {
-                comment = "Điểm số này hơi báo nha! Về học lại bài gấp đi chứ hiểu thế này là tết năm sau mới có quà! 🤡💀";
+                comment = "Cần cải thiện thêm kiến thức để đạt kết quả cao hơn.";
             }
             document.getElementById("result-comment").innerText = comment;
             loadLeaderboardView();
@@ -282,8 +288,8 @@
             document.getElementById("screen-name").classList.add("hidden");
             document.getElementById("screen-result").classList.remove("hidden");
             document.getElementById("final-score-text").innerText = `${data.score} / ${data.totalQuestions}`;
-            document.getElementById("result-title").innerText = `Đã tìm thấy bài làm của: ${data.playerName}`;
-            document.getElementById("result-comment").innerText = "Tên này đã làm bài trước đó rồi! Đây là kết quả đã lưu của bro 👇";
+            document.getElementById("result-title").innerText = `Tên "${data.playerName}" đã hoàn thành bài trước đó`;
+            document.getElementById("result-comment").innerText = "Mỗi người chỉ được phép thực hiện một lượt làm bài duy nhất.";
             loadLeaderboardView();
         }
 
@@ -304,13 +310,13 @@
             });
         }
 
-        // Render Admin Dashboard có nút Reset người dùng
+        // Render Admin Dashboard
         function renderAdminDashboard(dataList) {
             const container = document.getElementById("admin-data-list");
             container.innerHTML = "";
 
             if (dataList.length === 0) {
-                container.innerHTML = `<p class="text-center text-[#49454f]">Chưa có đứa nào làm bài hết bro ơi!</p>`;
+                container.innerHTML = `<p class="text-center text-[#49454f]">Chưa có dữ liệu bài làm.</p>`;
                 return;
             }
 
@@ -324,7 +330,7 @@
                         <div class="flex items-center gap-3">
                             <span class="text-xs text-[#49454f]">${new Date(item.timestamp).toLocaleTimeString()}</span>
                             <button onclick="handleResetUser(event, '${item.playerName}')" class="px-3 py-1 bg-[#b3261e] text-white text-xs rounded-xl font-medium hover:bg-[#8c1d18] transition-all cursor-pointer flex items-center gap-1">
-                                <span class="material-symbols-outlined text-sm">delete</span> Reset
+                                <span class="material-symbols-outlined text-sm">delete</span> Đặt lại
                             </button>
                         </div>
                     </summary>
@@ -337,7 +343,7 @@
                             <div class="p-2 rounded-xl ${ans.isCorrect ? 'bg-[#e8def8]' : 'bg-[#f9d8d6]'}">
                                 <p class="font-semibold text-[#1d1b20]">${ans.question}</p>
                                 <p class="text-xs">Đã chọn: <b>${ans.selectedOption}</b> ${ans.isCorrect ? '✅' : '❌'}</p>
-                                ${!ans.isCorrect ? `<p class="text-xs text-[#6750a4]">Đúng ra là: ${ans.correctOption}</p>` : ''}
+                                ${!ans.isCorrect ? `<p class="text-xs text-[#6750a4]">Đáp án đúng: ${ans.correctOption}</p>` : ''}
                             </div>
                         `;
                     });
@@ -348,10 +354,9 @@
             });
         }
 
-        // Hàm toàn cục để bấm nút Reset trên Admin Panel
         window.handleResetUser = async (event, playerName) => {
-            event.stopPropagation(); // Không cho bấm vào nút mà bị mở/đóng thẻ details
-            if (confirm(`Bro có chắc muốn reset lượt làm của '${playerName}' không? Họ sẽ có thể làm lại bài từ đầu.`)) {
+            event.stopPropagation();
+            if (confirm(`Bạn có chắc chắn muốn đặt lại kết quả của "${playerName}"? Người này sẽ có thể làm lại bài từ đầu.`)) {
                 await deleteQuizResult(playerName);
             }
         };
