@@ -1,8 +1,8 @@
 // Import Firebase SDK v13.0.0 chuẩn CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
-import { getDatabase, ref, set, get, child, onValue } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
+import { getDatabase, ref, set, get, child, onValue, remove } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
 
-// ⚙️ Cấu hình Firebase đã lấy được
+// ⚙️ Cấu hình Firebase của bro
 const firebaseConfig = {
     apiKey: "AIzaSyCAnZd2FObckVREBAtlKKdvE-uZVjXqJqQ",
     authDomain: "phongvn-s-quiz.firebaseapp.com",
@@ -14,7 +14,6 @@ const firebaseConfig = {
     measurementId: "G-4CW2FMHZWR"
 };
 
-// Khởi tạo Firebase
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
@@ -31,7 +30,7 @@ export async function checkPlayerName(name) {
     try {
         const snapshot = await get(child(dbRef, `quiz_results/${cleanName}`));
         if (snapshot.exists()) {
-            return { status: "NAME_TAKEN" };
+            return { status: "NAME_TAKEN", data: snapshot.val() };
         } else {
             return { status: "VALID_USER", name: cleanName };
         }
@@ -67,7 +66,19 @@ export async function saveQuizResult(playerName, score, totalQuestions, userAnsw
 }
 
 /**
- * Lắng nghe Bảng xếp hạng Realtime (User)
+ * 🔥 [MỚI] Xóa/Reset lượt làm bài của người chơi (Dành cho Admin)
+ */
+export async function deleteQuizResult(playerName) {
+    try {
+        await remove(ref(db, 'quiz_results/' + playerName));
+        console.log(`Đã reset người dùng ${playerName}`);
+    } catch (error) {
+        console.error("Lỗi khi xóa lượt làm:", error);
+    }
+}
+
+/**
+ * Lắng nghe Bảng xếp hạng Realtime
  */
 export function subscribeLeaderboard(callback) {
     const resultsRef = ref(db, 'quiz_results');
