@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thách Đấu: Bạn Hiểu Tôi Đến Đâu? 🎮🔥</title>
+    <title>Quiz about PhongVN</title>
     <!-- Google Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,14 +32,15 @@
         <!-- Header -->
         <div class="text-center mb-8">
             <span class="material-symbols-outlined text-6xl text-[#6750a4] mb-2">psychology</span>
-            <h1 class="text-3xl md:text-4xl font-bold text-[#1d1b20]">Hiểu Tôi Hơi Khó - Chê Tôi Hơi Phí 😎</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-[#1d1b20]">Quiz about PhongVN 😎</h1>
+            <p class="text-[#49454f] mt-2">Thử thách độ hiểu biết về chủ nhân xem được mấy điểm!</p>
         </div>
 
         <!-- Màn 1: Nhập Tên -->
         <div id="screen-name" class="space-y-6">
             <div class="bg-[#f7f2fa] p-6 rounded-2xl border border-[#e6e1e5]">
-                <label class="block text-sm font-medium text-[#49454f] mb-2">Nhập danh tính đại hiệp trước khi nộp mạng:</label>
-                <input type="text" id="player-name-input" placeholder="Tên hoặc biệt danh..." 
+                <label class="block text-sm font-medium text-[#49454f] mb-2">Nhập tên hoặc tên người dùng:</label>
+                <input type="text" id="player-name-input" placeholder="Ví dụ: Tên của bạn..." 
                     class="w-full px-4 py-3 rounded-xl border border-[#79747e] bg-white text-[#1d1b20] focus:outline-none focus:border-[#6750a4] focus:ring-2 focus:ring-[#6750a4]/20">
                 <p id="name-error" class="text-sm text-[#b3261e] mt-2 hidden font-semibold"></p>
             </div>
@@ -48,7 +49,7 @@
             </button>
         </div>
 
-        <!-- Màn 2: Nhập Mật Khẩu Admin (Nếu gõ PhongVN) -->
+        <!-- Màn 2: Xác thực Admin (Nếu gõ PhongVN) -->
         <div id="screen-admin-auth" class="hidden space-y-6">
             <div class="bg-[#f7f2fa] p-6 rounded-2xl border border-[#e6e1e5]">
                 <div class="flex items-center gap-2 mb-4 text-[#6750a4]">
@@ -68,22 +69,29 @@
         <div id="screen-quiz" class="hidden space-y-6">
             <div class="flex justify-between items-center text-sm font-medium text-[#49454f] bg-[#f7f2fa] px-4 py-2 rounded-xl">
                 <span id="question-counter">Câu 1 / 15</span>
-                <span id="score-tracker">Điểm: 0</span>
+                <span id="quiz-player-tag" class="font-bold text-[#6750a4]"></span>
             </div>
+            
             <div class="space-y-4">
                 <h2 id="question-text" class="text-xl md:text-2xl font-semibold text-[#1d1b20]"></h2>
                 <div id="options-container" class="space-y-3"></div>
             </div>
-            <button id="btn-next" class="ml-auto px-6 py-3 bg-[#6750a4] text-white font-semibold rounded-2xl hover:bg-[#523d8b] transition-all flex items-center gap-2 hidden cursor-pointer">
-                Câu tiếp theo <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
+
+            <div class="flex justify-between pt-4">
+                <button id="btn-prev" class="px-6 py-3 bg-[#e7e0ec] text-[#1d1b20] font-semibold rounded-2xl hover:bg-[#d0c5dc] transition-all flex items-center gap-2 cursor-pointer hidden">
+                    <span class="material-symbols-outlined">arrow_back</span> Câu trước
+                </button>
+                <button id="btn-next" class="ml-auto px-6 py-3 bg-[#6750a4] text-white font-semibold rounded-2xl hover:bg-[#523d8b] transition-all flex items-center gap-2 cursor-pointer">
+                    Câu tiếp theo <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+            </div>
         </div>
 
-        <!-- Màn 4: Kết quả + Bảng xếp hạng (User) -->
+        <!-- Màn 4: Kết quả + Bảng xếp hạng -->
         <div id="screen-result" class="hidden space-y-6">
-            <div class="text-center bg-[#f7f2fa] p-6 rounded-3xl border border-[#e6e1e5]">
+            <div id="result-banner" class="text-center bg-[#f7f2fa] p-6 rounded-3xl border border-[#e6e1e5]">
                 <span class="material-symbols-outlined text-6xl text-[#6750a4] mb-2">military_tech</span>
-                <h2 class="text-2xl font-bold text-[#1d1b20]">Kết Quả Của Bạn</h2>
+                <h2 id="result-title" class="text-2xl font-bold text-[#1d1b20]">Kết Quả Của Bạn</h2>
                 <p id="final-score-text" class="text-4xl font-extrabold text-[#6750a4] my-2">0 / 15</p>
                 <p id="result-comment" class="text-[#49454f] font-medium"></p>
             </div>
@@ -92,24 +100,24 @@
                 <h3 class="text-xl font-bold text-[#1d1b20] flex items-center gap-2">
                     <span class="material-symbols-outlined text-[#6750a4]">leaderboard</span> Bảng Xếp Hạng Đám Bạn
                 </h3>
-                <div id="leaderboard-list" class="bg-[#f7f2fa] rounded-2xl p-4 divide-y divide-[#e6e1e5] max-h-60 overflow-y-auto">
-                    <!-- Data từ Firebase sẽ render ở đây -->
-                </div>
+                <div id="leaderboard-list" class="bg-[#f7f2fa] rounded-2xl p-4 divide-y divide-[#e6e1e5] max-h-60 overflow-y-auto"></div>
             </div>
+
+            <button onclick="location.reload()" class="w-full py-4 bg-[#6750a4] text-white font-semibold rounded-2xl hover:bg-[#523d8b] transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <span class="material-symbols-outlined">refresh</span> Làm lại / Đổi tên khác
+            </button>
         </div>
 
-        <!-- Màn 5: Admin Dashboard (PhongVN) -->
+        <!-- Màn 5: Admin Dashboard (Có tính năng Reset người dùng) -->
         <div id="screen-admin-dashboard" class="hidden space-y-6">
             <div class="flex justify-between items-center bg-[#e8def8] p-4 rounded-2xl text-[#1d192b]">
                 <span class="font-bold text-lg flex items-center gap-2"><span class="material-symbols-outlined">analytics</span> Admin Panel - Phong VN</span>
-                <button onclick="location.reload()" class="text-sm bg-white px-3 py-1 rounded-xl font-semibold text-[#6750a4]">Thoát</button>
+                <button onclick="location.reload()" class="text-sm bg-white px-3 py-1 rounded-xl font-semibold text-[#6750a4] cursor-pointer">Thoát</button>
             </div>
 
             <div class="space-y-4">
                 <h3 class="font-bold text-lg text-[#1d1b20]">Danh sách bài làm của đám bạn:</h3>
-                <div id="admin-data-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2">
-                    <!-- Chi tiết từng đứa sẽ ở đây -->
-                </div>
+                <div id="admin-data-list" class="space-y-4 max-h-[500px] overflow-y-auto pr-2"></div>
             </div>
         </div>
 
@@ -118,14 +126,13 @@
     <!-- App Logic -->
     <script type="module">
         import { quizData } from './quiz-data.js';
-        import { checkPlayerName, verifyAdminPassword, saveQuizResult, subscribeLeaderboard, subscribeAdminDashboard } from './firebase-config.js';
+        import { checkPlayerName, verifyAdminPassword, saveQuizResult, deleteQuizResult, subscribeLeaderboard, subscribeAdminDashboard } from './firebase-config.js';
 
         let currentQuestionIndex = 0;
-        let score = 0;
         let currentPlayerName = "";
-        let userAnswers = []; // Lưu lại lịch sử đáp án để admin soi
+        let selectedAnswers = new Array(quizData.length).fill(null);
 
-        // Bắt sự kiện bấm Bắt đầu
+        // Nút Bắt đầu
         document.getElementById('btn-start').addEventListener('click', async () => {
             const nameInput = document.getElementById('player-name-input').value.trim();
             const errorElement = document.getElementById('name-error');
@@ -140,42 +147,36 @@
             const check = await checkPlayerName(nameInput);
 
             if (check.status === "ADMIN_TRIGGER") {
-                // Vào màn hình Admin Password
                 document.getElementById('screen-name').classList.add('hidden');
                 document.getElementById('screen-admin-auth').classList.remove('hidden');
             } else if (check.status === "NAME_TAKEN") {
-                errorElement.innerText = "Tên này đã có đứa dùng rồi bro! Đổi tên khác lẹ lên 😜";
-                errorElement.classList.remove('hidden');
+                currentPlayerName = nameInput;
+                showExistingResult(check.data);
             } else {
-                // Tên hợp lệ -> Vào Quiz
                 currentPlayerName = check.name;
                 document.getElementById('screen-name').classList.add('hidden');
                 document.getElementById('screen-quiz').classList.remove('hidden');
+                document.getElementById('quiz-player-tag').innerText = `Thí sinh: ${currentPlayerName}`;
                 loadQuestion();
             }
         });
 
-        // Bắt sự kiện Login Admin
+        // Login Admin
         document.getElementById('btn-admin-login').addEventListener('click', () => {
             const pass = document.getElementById('admin-pass-input').value;
             if (verifyAdminPassword(pass)) {
                 document.getElementById('screen-admin-auth').classList.add('hidden');
                 document.getElementById('screen-admin-dashboard').classList.remove('hidden');
-                
-                // Lấy dữ liệu Realtime cho Admin
-                subscribeAdminDashboard((dataList) => {
-                    renderAdminDashboard(dataList);
-                });
+                subscribeAdminDashboard((dataList) => renderAdminDashboard(dataList));
             } else {
                 document.getElementById('admin-pass-error').classList.remove('hidden');
             }
         });
 
-        // Load câu hỏi Quiz
+        // Load Quiz
         function loadQuestion() {
             const q = quizData[currentQuestionIndex];
             document.getElementById("question-counter").innerText = `Câu ${currentQuestionIndex + 1} / ${quizData.length}`;
-            document.getElementById("score-tracker").innerText = `Điểm: ${score}`;
             document.getElementById("question-text").innerText = q.question;
 
             const optionsContainer = document.getElementById("options-container");
@@ -183,72 +184,127 @@
 
             q.options.forEach((opt, index) => {
                 const btn = document.createElement("button");
-                btn.className = "w-full text-left p-4 rounded-2xl border border-[#79747e]/40 bg-white hover:bg-[#f3edf7] transition-all font-medium text-[#1d1b20] cursor-pointer shadow-sm";
+                const isSelected = selectedAnswers[currentQuestionIndex] === index;
+                
+                let baseStyle = "w-full text-left p-4 rounded-2xl border transition-all font-medium text-[#1d1b20] cursor-pointer shadow-sm ";
+                if (isSelected) {
+                    baseStyle += "bg-[#e8def8] border-[#6750a4] font-bold";
+                } else {
+                    baseStyle += "border-[#79747e]/40 bg-white hover:bg-[#f3edf7]";
+                }
+
+                btn.className = baseStyle;
                 btn.innerText = opt;
-                btn.onclick = () => selectAnswer(index, btn);
+                btn.onclick = () => selectOption(index);
                 optionsContainer.appendChild(btn);
             });
 
-            document.getElementById("btn-next").classList.add("hidden");
-        }
-
-        function selectAnswer(selectedIndex, selectedBtn) {
-            const q = quizData[currentQuestionIndex];
-            const allBtns = document.getElementById("options-container").children;
-
-            // Lưu lịch sử câu trả lời
-            userAnswers.push({
-                question: q.question,
-                selectedOption: q.options[selectedIndex],
-                correctOption: q.options[q.correct],
-                isCorrect: selectedIndex === q.correct
-            });
-
-            for (let btn of allBtns) { btn.disabled = true; }
-
-            if (selectedIndex === q.correct) {
-                selectedBtn.classList.add("bg-[#e8def8]", "border-[#6750a4]", "font-bold");
-                score++;
+            if (currentQuestionIndex > 0) {
+                document.getElementById("btn-prev").classList.remove("hidden");
             } else {
-                selectedBtn.classList.add("bg-[#f9d8d6]", "border-[#b3261e]");
-                allBtns[q.correct].classList.add("bg-[#e8def8]", "border-[#6750a4]");
+                document.getElementById("btn-prev").classList.add("hidden");
             }
 
-            document.getElementById("score-tracker").innerText = `Điểm: ${score}`;
-            document.getElementById("btn-next").classList.remove("hidden");
+            const nextBtn = document.getElementById("btn-next");
+            if (currentQuestionIndex === quizData.length - 1) {
+                nextBtn.innerHTML = `Nộp bài <span class="material-symbols-outlined">send</span>`;
+            } else {
+                nextBtn.innerHTML = `Câu tiếp theo <span class="material-symbols-outlined">arrow_forward</span>`;
+            }
         }
 
-        document.getElementById('btn-next').addEventListener('click', () => {
+        function selectOption(index) {
+            selectedAnswers[currentQuestionIndex] = index;
+            loadQuestion();
+        }
+
+        document.getElementById('btn-prev').addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        document.getElementById('btn-next').addEventListener('click', async () => {
+            if (selectedAnswers[currentQuestionIndex] === null) {
+                alert("Chọn một đáp án đi đại hiệp ơi, đừng bỏ trống chứ! 🧐");
+                return;
+            }
+
             currentQuestionIndex++;
             if (currentQuestionIndex < quizData.length) {
                 loadQuestion();
             } else {
-                finishQuiz();
+                await submitQuiz();
             }
         });
 
-        async function finishQuiz() {
+        async function submitQuiz() {
+            let score = 0;
+            let detailedAnswers = [];
+
+            quizData.forEach((q, idx) => {
+                const userChoice = selectedAnswers[idx];
+                const isCorrect = userChoice === q.correct;
+                if (isCorrect) score++;
+
+                detailedAnswers.push({
+                    question: q.question,
+                    selectedOption: userChoice !== null ? q.options[userChoice] : "Chưa chọn",
+                    correctOption: q.options[q.correct],
+                    isCorrect: isCorrect
+                });
+            });
+
+            await saveQuizResult(currentPlayerName, score, quizData.length, detailedAnswers);
+            showResultScreen(score);
+        }
+
+        function showResultScreen(score) {
             document.getElementById("screen-quiz").classList.add("hidden");
             document.getElementById("screen-result").classList.remove("hidden");
             document.getElementById("final-score-text").innerText = `${score} / ${quizData.length}`;
+            document.getElementById("result-title").innerText = `Kết Quả Của: ${currentPlayerName}`;
 
-            // Lưu lên Firebase
-            await saveQuizResult(currentPlayerName, score, quizData.length, userAnswers);
+            let comment = "";
+            if (score === 15) {
+                comment = "Đỉnh chóp! Hiểu chủ web từng chân tơ kẽ tóc luôn! 👑🔥";
+            } else if (score >= 10) {
+                comment = "Hiểu nhau sương sương đấy, chuẩn bị rủ đi trà sữa được rồi! 😉";
+            } else {
+                comment = "Điểm số này hơi báo nha! Về học lại bài gấp đi chứ hiểu thế này là tết năm sau mới có quà! 🤡💀";
+            }
+            document.getElementById("result-comment").innerText = comment;
+            loadLeaderboardView();
+        }
 
-            // Tải Bảng xếp hạng Realtime
+        function showExistingResult(data) {
+            document.getElementById("screen-name").classList.add("hidden");
+            document.getElementById("screen-result").classList.remove("hidden");
+            document.getElementById("final-score-text").innerText = `${data.score} / ${data.totalQuestions}`;
+            document.getElementById("result-title").innerText = `Đã tìm thấy bài làm của: ${data.playerName}`;
+            document.getElementById("result-comment").innerText = "Tên này đã làm bài trước đó rồi! Đây là kết quả đã lưu của bro 👇";
+            loadLeaderboardView();
+        }
+
+        function loadLeaderboardView() {
             subscribeLeaderboard((list) => {
                 const listContainer = document.getElementById("leaderboard-list");
                 listContainer.innerHTML = "";
                 list.forEach((item, idx) => {
                     const row = document.createElement("div");
                     row.className = "py-2 flex justify-between items-center text-sm";
-                    row.innerHTML = `<span class="font-medium text-[#1d1b20]">${idx + 1}. ${item.playerName}</span><span class="text-[#6750a4] font-bold">${item.score}/${item.totalQuestions} điểm</span>`;
+                    const isCurrent = item.playerName === currentPlayerName;
+                    row.innerHTML = `
+                        <span class="font-medium ${isCurrent ? 'text-[#6750a4] font-bold' : 'text-[#1d1b20]'}">${idx + 1}. ${item.playerName} ${isCurrent ? '(Bạn)' : ''}</span>
+                        <span class="text-[#6750a4] font-bold">${item.score}/${item.totalQuestions} điểm</span>
+                    `;
                     listContainer.appendChild(row);
                 });
             });
         }
 
-        // Render Admin Dashboard để soi đáp án đám bạn
+        // Render Admin Dashboard có nút Reset người dùng
         function renderAdminDashboard(dataList) {
             const container = document.getElementById("admin-data-list");
             container.innerHTML = "";
@@ -260,15 +316,23 @@
 
             dataList.forEach(item => {
                 const card = document.createElement("details");
-                card.className = "bg-[#f7f2fa] rounded-2xl p-4 border border-[#e6e1e5] cursor-pointer";
+                card.className = "bg-[#f7f2fa] rounded-2xl p-4 border border-[#e6e1e5] cursor-pointer mb-3";
                 
-                let detailsHTML = `<summary class="font-bold text-[#1d1b20] flex justify-between items-center">
-                    <span>👤 ${item.playerName} (${item.score}/${item.totalQuestions} điểm)</span>
-                    <span class="text-xs text-[#49454f]">${new Date(item.timestamp).toLocaleTimeString()}</span>
-                </summary><div class="mt-4 space-y-2 border-t border-[#e6e1e5] pt-3 text-sm">`;
+                let detailsHTML = `
+                    <summary class="font-bold text-[#1d1b20] flex justify-between items-center">
+                        <span class="flex items-center gap-2">👤 ${item.playerName} (${item.score}/${item.totalQuestions} điểm)</span>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-[#49454f]">${new Date(item.timestamp).toLocaleTimeString()}</span>
+                            <button onclick="handleResetUser(event, '${item.playerName}')" class="px-3 py-1 bg-[#b3261e] text-white text-xs rounded-xl font-medium hover:bg-[#8c1d18] transition-all cursor-pointer flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">delete</span> Reset
+                            </button>
+                        </div>
+                    </summary>
+                    <div class="mt-4 space-y-2 border-t border-[#e6e1e5] pt-3 text-sm">
+                `;
 
                 if (item.userAnswers) {
-                    item.userAnswers.forEach((ans, i) => {
+                    item.userAnswers.forEach((ans) => {
                         detailsHTML += `
                             <div class="p-2 rounded-xl ${ans.isCorrect ? 'bg-[#e8def8]' : 'bg-[#f9d8d6]'}">
                                 <p class="font-semibold text-[#1d1b20]">${ans.question}</p>
@@ -283,7 +347,14 @@
                 container.appendChild(card);
             });
         }
+
+        // Hàm toàn cục để bấm nút Reset trên Admin Panel
+        window.handleResetUser = async (event, playerName) => {
+            event.stopPropagation(); // Không cho bấm vào nút mà bị mở/đóng thẻ details
+            if (confirm(`Bro có chắc muốn reset lượt làm của '${playerName}' không? Họ sẽ có thể làm lại bài từ đầu.`)) {
+                await deleteQuizResult(playerName);
+            }
+        };
     </script>
 </body>
-  </html>
-                  
+</html>
