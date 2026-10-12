@@ -1,88 +1,88 @@
 export const quizData = [
     {
-        question: "1. Gu nhạc của tôi thuộc hệ nào?",
+        question: "1. Gu nhạc yêu thích nhất?",
         options: [
-            "A. Nhạc lofi nhẹ nhàng chilling",
-            "B. Nhạc game Minecraft chill chill (C418, Lena Raine...)",
-            "C. Nhạc trending TikTok",
-            "D. Bật nhạc lên chỉ để làm nhạc nền ngủ"
+            "A. Nhạc Lo-fi chill",
+            "B. Nhạc game Minecraft (C418, Lena Raine...)",
+            "C. Nhạc bọt / Trend TikTok",
+            "D. Nhạc không lời để ngủ"
         ],
         correct: 1
     },
     {
-        question: "2. Khi gặp một drama siêu to khổng lồ trên mạng, tôi sẽ...",
+        question: "2. Phản ứng khi hóng drama trên mạng?",
         options: [
-            "A. Lao vào cãi lộn lấy tự do",
-            "B. Tàng hình thả icon 'Haha' rồi đi ra",
-            "C. Âm thầm hóng từ A-Z rồi đem đi tọc mạch với hội bạn",
+            "A. Lao vào cãi lộn",
+            "B. Thả icon Haha rồi lướt đi",
+            "C. Hóng từ A-Z rồi đem đi 'tọc mạch'",
             "D. Mệt quá không quan tâm"
         ],
         correct: 2
     },
     {
-        question: "3. Nếu được chọn 1 món đồ công nghệ, tôi sẽ mê cái nào nhất?",
+        question: "3. Món đồ công nghệ mê nhất?",
         options: [
-            "A. Điện thoại đời mới nhất",
-            "B. PC / Laptop cấu hình cân mọi game",
-            "C. Tai nghe chống ồn xịn xịn",
-            "D. Máy đọc sách cho tri thức"
+            "A. Điện thoại đời mới",
+            "B. PC / Laptop cấu hình khủng",
+            "C. Tai nghe chống ồn xịn",
+            "D. Máy đọc sách"
         ],
         correct: 1
     },
     {
-        question: "4. Thường ngày tôi hay nhắn tin/trò chuyện theo kiểu nào nhất?",
+        question: "4. Phong cách nhắn tin thường ngày?",
         options: [
-            "A. Trả lời ngay lập tức trong 0.1s",
-            "B. 'Xem rồi để đó', 3 tiếng sau mới nhớ ra rep",
-            "C. Bắn icon / meme dồn dập thay lời nói",
-            "D. Cả C lẫn D (Lúc thì Spam meme, lúc thì gõ bài văn tế siêu dài)"
+            "A. Rep ngay trong 0.1s",
+            "B. Xem rồi để đó, 3 tiếng sau mới rep",
+            "C. Bắn meme / icon dồn dập",
+            "D. Lúc spam meme, lúc viết văn tế siêu dài"
         ],
         correct: 3
     },
     {
-        question: "5. Kỹ năng sinh tồn bá đạo nhất của tôi là gì?",
+        question: "5. Kỹ năng sinh tồn bá đạo nhất?",
         options: [
-            "A. Thức đêm như cú mèo mà sáng vẫn tươi tỉnh",
-            "B. Cày game/code liền 5 tiếng không cần đứng dậy",
-            "C. Giả vờ hiểu chuyện dù đầu óc đang trống rỗng",
-            "D. Ngủ mọi lúc mọi nơi"
+            "A. Thức đêm như cú vẫn tươi tỉnh",
+            "B. Cày game/code 5 tiếng không đứng dậy",
+            "C. Giả vờ hiểu chuyện dù đầu trống rỗng",
+            "D. Lăn ra ngủ mọi lúc mọi nơi"
         ],
         correct: 1
     },
     {
-        question: "6. Mỗi khi tôi bảo 'Chút nữa tôi làm' thì thực chất là...",
+        question: "6. Khi bảo 'Chút nữa tôi làm' nghĩa là...",
         options: [
             "A. 5 phút nữa làm liền",
-            "B. Khi nào bị dí sát đít mới bắt đầu cuống cuồng",
+            "B. Bị dí sát đít mới cuống cuồng làm",
             "C. Hứa cho vui chứ mai tính",
             "D. Quên luôn tới tuần sau"
         ],
         correct: 1
     },
     {
-        question: "7. Loài động vật mà tôi cưng cưng muốn nựng nhất?",
+        question: "7. Loài động vật cưng nhất?",
         options: [
-            "A. Chó cún đằng đẵng",
+            "A. Chó cún",
             "B. Mèo 'hoàng thượng'",
-            "C. Capybara thân thiện",
-            "D. Con quái vật trong Minecraft"
+            "C. Capybara",
+            "D. Quái vật Minecraft"
         ],
         correct: 1
     },
     {
-        question: "8. Khi nhóm bạn rủ đi chơi, tôi thường là đứa...",
+        question: "8. Vai trò khi nhóm bạn rủ đi chơi?",
         options: [
-            "A. Lên kế hoạch chi tiết từ A-Z",
+            "A. Lên kế hoạch A-Z",
             "B. 'Đi đâu cũng được, ăn gì cũng xong'",
-            "C. Hứa đi xong tới giờ chót đòi bùng",
-            "D. Đứa đến trễ nhất nhóm"
+            "C. Hứa đi xong phút chót bùng",
+            "D. Đứa luôn đến trễ nhất"
         ],
         correct: 1
     },
     {
-        question: "9. Game nào dưới đây tôi hay cày hoặc thích chơi nhất?",
+        question: "9. Game hay cày nhất?",
         options: [
-            "A. Liên Quân / Liên Minh",
+            "A. MOBA (Liên Quân / LMHT)",
             "B. Minecraft",
             "C. Roblox",
             "D. PUBG Mobile"
@@ -90,62 +90,62 @@ export const quizData = [
         correct: 1
     },
     {
-        question: "10. Điểm yếu chí mạng của tôi là gì?",
+        question: "10. Điểm yếu chí mạng?",
         options: [
-            "A. Mê đồ ngọt / trà sữa",
-            "B. Rất dễ bị phân tâm bởi điện thoại/mạng xã hội",
-            "C. Thấy đồ công nghệ / đồ chơi mới là mắt sáng rực",
-            "D. Cả B và C đều đúng!"
+            "A. Mê đồ ngọt / Trà sữa",
+            "B. Dễ mất tập trung vì điện thoại",
+            "C. Thấy đồ công nghệ mới là sáng mắt",
+            "D. Cả B và C đều đúng"
         ],
         correct: 3
     },
     {
-        question: "11. Môn học / Lĩnh vực nào tôi cảm thấy 'chữa lành' nhất?",
+        question: "11. Môn học / Lĩnh vực 'chữa lành' nhất?",
         options: [
             "A. Văn học / Lịch sử",
-            "B. Tin học / Công nghệ / Lập trình",
+            "B. Tin học / Lập trình / Công nghệ",
             "C. Ngoại ngữ",
-            "D. Môn Năng khiếu (Vẽ/Nhạc)"
+            "D. Môn năng khiếu (Vẽ/Nhạc)"
         ],
         correct: 1
     },
     {
-        question: "12. Nếu trúng số 10 tỷ, việc đầu tiên tôi làm sẽ là...",
+        question: "12. Nếu trúng số 10 tỷ sẽ làm gì đầu tiên?",
         options: [
-            "A. Nạp hết vào game / sắm dàn máy cực xịn",
+            "A. Nạp game / Sắm dàn máy cực khủng",
             "B. Đi du lịch khắp thế giới",
-            "C. Gửi tiết kiệm lấy lãi ăn dần (Tư duy tài chính đỉnh cao!)",
+            "C. Gửi tiết kiệm lấy lãi ăn dần",
             "D. Mua đồ ăn ngon về đánh chén"
         ],
         correct: 2
     },
     {
-        question: "13. Phản ứng của tôi khi bị bạn bè chọc / troll?",
+        question: "13. Phản ứng khi bị bạn bè chọc / troll?",
         options: [
             "A. Cười trừ chịu trận",
-            "B. Troll lại gấp đôi, không để bị lép vế",
+            "B. Troll lại gấp đôi, không lép vế",
             "C. Giận dỗi 5 phút rồi thôi",
             "D. Báo công an!"
         ],
         correct: 1
     },
     {
-        question: "14. Phong cách thời trang / outfit đi chơi ưa thích của tôi?",
+        question: "14. Outfit đi chơi ưa thích?",
         options: [
-            "A. Áo phông + quần đùi/jeans đơn giản, thoải mái",
-            "B. Lên đồ đóng thùng như đi sự kiện",
+            "A. Áo phông + Quần đùi/Jeans đơn giản",
+            "B. Lên đồ đóng thùng lịch sự",
             "C. Đồ thể thao năng động",
-            "D. Mặc gì cũng được miễn không cởi trần"
+            "D. Mặc gì cũng được miễn thoải mái"
         ],
         correct: 0
     },
     {
-        question: "15. Khi đối mặt với một đống bài tập hoặc deadline ngập mặt, phản ứng của tôi là gì?",
+        question: "15. Phản ứng trước đống deadline ngập mặt?",
         options: [
-            "A. Lên kế hoạch cực kỳ khoa học và hoàn thành sớm hạn",
-            "B. Ngồi nhìn đống bài tập thở dài rồi đi lướt Facebook/TikTok giải tỏa tâm lý",
-            "C. Nước tới chân mới nhảy, 2h sáng hôm sau ngồi cuống cuồng cày xuyên màn đêm",
-            "D. Cả B và C (Đúng bản chất của hệ tư tưởng trì hoãn quốc gia!)"
+            "A. Làm sớm, xong trước hạn",
+            "B. Lướt TikTok / FB giải tỏa tâm lý",
+            "C. Nước đến chân mới nhảy, 2h sáng cày đêm",
+            "D. Vừa lướt TikTok vừa thức cày xuyên đêm"
         ],
         correct: 3
     }
